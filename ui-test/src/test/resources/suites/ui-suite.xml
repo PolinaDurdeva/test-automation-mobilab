@@ -1,0 +1,7 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="UI suite" parallel="methods" thread-count="2">
+  <test name="UI regression">
+    <classes>
+    </classes>
+  </test>
+</suite>

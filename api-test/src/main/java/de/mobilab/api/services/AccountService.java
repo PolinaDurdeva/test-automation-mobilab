@@ -1,10 +1,9 @@
 package de.mobilab.api.services;
 
-import de.mobilab.api.currency.Currency;
-import de.mobilab.api.responses.AccountResponse;
+import de.mobilab.api.dto.Account;
+import de.mobilab.api.responses.AssertableResponse;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
-import java.util.Map;
 
 public class AccountService extends ApiService {
 
@@ -12,17 +11,12 @@ public class AccountService extends ApiService {
 
     }
 
-    @Step("Create Account")
-    public AccountResponse createAccount(String ownerName, Double balance, Currency currency) {
-        return RestAssured.given()
+    @Step("Create an account with params: {account.owner}, {account.balance}, {account.currency}")
+    public AssertableResponse createAccount(Account account) {
+        return new AssertableResponse(RestAssured.given()
                 .spec(specification)
-                .body(Map.of("owner", ownerName, "balance", balance.toString(), "currency", currency))
-                .post(Endpoint.ACCOUNTS)
-                .then()
-                .statusCode(201)
-                .extract()
-                .body()
-                .as(AccountResponse.class);
+                .body(account)
+                .post(Endpoint.ACCOUNTS));
     }
 
 }

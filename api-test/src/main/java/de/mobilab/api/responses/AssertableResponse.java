@@ -1,5 +1,6 @@
 package de.mobilab.api.responses;
 
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
@@ -19,4 +20,9 @@ public class AssertableResponse {
         response.statusCode(statusCode);
         return this;
     }
+
+    public JsonPath getJsonPath() {
+        return response.extract().jsonPath();
+    }
+
 }

@@ -1,4 +1,4 @@
-package de.mobilab.api.services;
+package de.mobilab.api.services.specifications;
 
 import io.restassured.specification.RequestSpecification;
 

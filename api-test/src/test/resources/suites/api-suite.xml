@@ -2,6 +2,9 @@
 <suite name="API suite">
   <test name="API Regression">
     <classes>
+      <class name="de.mobilab.api.tests.AccountTest"></class>
+      <class name="de.mobilab.api.tests.TransactionWithDifferentCurrencyTest"></class>
+      <class name="de.mobilab.api.tests.TransactionWithinOneCurrencyTest"></class>
     </classes>
   </test>
 </suite>

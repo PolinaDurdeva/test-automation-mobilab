@@ -1,7 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="UI suite" parallel="methods" thread-count="2">
-  <test name="UI regression">
+  <test name="UI smoke">
     <classes>
+      <class name="de.mobilab.ui.tests.AccountListTest"></class>
+      <class name="de.mobilab.ui.tests.AccountTest"></class>
+      <class name="de.mobilab.ui.tests.TransactionListTest"></class>
+      <class name="de.mobilab.ui.tests.TransactionTest"></class>
     </classes>
   </test>
 </suite>

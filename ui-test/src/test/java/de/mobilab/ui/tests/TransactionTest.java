@@ -13,18 +13,18 @@ import org.testng.annotations.Test;
 
 public class TransactionTest extends BaseTest {
 
-    private final AccountDataProvider accountDataProvider = new AccountDataProvider();
     private Account accountSource;
     private Account accountDestination;
 
     @BeforeClass
     public void createTwoAccounts() {
+        AccountDataProvider accountDataProvider = new AccountDataProvider();
         accountSource = accountDataProvider.createAccount("A", BigDecimal.valueOf(1000.1), Currency.EURO);
         accountDestination = accountDataProvider.createAccount("B", BigDecimal.valueOf(123.5), Currency.EURO);
     }
 
     @Test
-    @Description("User can create transaction")
+    @Description("User can create a transaction")
     public void userCanCreateTransaction() {
         MainPage.open()
                 .goToCreateTransaction()

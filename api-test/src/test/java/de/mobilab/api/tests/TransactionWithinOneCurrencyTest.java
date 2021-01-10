@@ -12,15 +12,22 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TransactionWithinOneCurrencyTest extends BaseTest {
 
-    private final TransactionService transactionService = new TransactionService();
-    private final AccountDataProvider accountDataProvider = new AccountDataProvider();
+    private TransactionService transactionService;
+    private AccountDataProvider accountDataProvider;
     private Account accountSource;
     private Account accountDestination;
+
+    @BeforeClass
+    public void init() {
+        transactionService = new TransactionService();
+        accountDataProvider = new AccountDataProvider();
+    }
 
     @BeforeMethod
     public void createTwoAccount() {

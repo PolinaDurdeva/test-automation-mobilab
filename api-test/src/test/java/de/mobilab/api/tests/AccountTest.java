@@ -8,15 +8,21 @@ import de.mobilab.api.services.AccountService;
 import io.qameta.allure.Description;
 import java.math.BigDecimal;
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class AccountTest extends BaseTest {
 
-    private final AccountService accountService = new AccountService();
+    private AccountService accountService;
+
+    @BeforeClass
+    public void init() {
+        accountService = new AccountService();
+    }
 
     @Test(dataProvider = "validUserAccounts")
-    @Description("Verify that a user can create a account with valid data")
+    @Description("Verify that a user can create an account with valid data")
     public void userAccountWithValidData(Account account) {
         Account response = accountService
                 .createAccount(account)

@@ -6,6 +6,7 @@ import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import de.mobilab.ui.configurations.TestConfiguration;
+import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +32,7 @@ public class BaseTest {
         Configuration.reportsFolder = testConfiguration.reportFolder();
         Configuration.fastSetValue = true;
         Configuration.startMaximized = true;
+        RestAssured.baseURI = testConfiguration.apiUrl();
     }
 
     @AfterSuite

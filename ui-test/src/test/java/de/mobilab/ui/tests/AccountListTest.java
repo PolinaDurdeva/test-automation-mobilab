@@ -12,16 +12,16 @@ import org.testng.annotations.Test;
 
 public class AccountListTest extends BaseTest {
 
-    private final AccountDataProvider accountDataProvider = new AccountDataProvider();
     private Account account;
 
     @BeforeClass
     public void createAccount() {
+        AccountDataProvider accountDataProvider = new AccountDataProvider();
         account = accountDataProvider.createAccount("A", BigDecimal.valueOf(1000.1), Currency.EURO);
     }
 
     @Test
-    @Description("New accounts appears in the account list with correct data")
+    @Description("A new account appears in the account list with correct data")
     public void createdAccountDisplayedInTable() {
         MainPage.open()
                 .goToAccountList()

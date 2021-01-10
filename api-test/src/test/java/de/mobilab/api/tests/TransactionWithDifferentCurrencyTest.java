@@ -14,16 +14,24 @@ import io.qameta.allure.Description;
 import java.math.BigDecimal;
 import java.util.Map;
 import org.hamcrest.Matchers;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TransactionWithDifferentCurrencyTest extends BaseTest {
 
-    private final TransactionService transactionService = new TransactionService();
-    private final AccountDataProvider accountDataProvider = new AccountDataProvider();
-    private final TestDataSpecification testData = new StaticTestDataSpecification();
-    private final Map<Currency, Rate> rates = testData.rates();
+    private TransactionService transactionService;
+    private AccountDataProvider accountDataProvider;
+    private TestDataSpecification testData;
+    private Map<Currency, Rate> rates;
 
+    @BeforeClass
+    public void init() {
+        transactionService = new TransactionService();
+        accountDataProvider = new AccountDataProvider();
+        testData = new StaticTestDataSpecification();
+        rates = testData.rates();
+    }
 
     @Test(dataProvider = "validTransactionsData")
     @Description("Transfer money from one account to another with different currencies")

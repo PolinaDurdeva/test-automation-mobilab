@@ -15,12 +15,12 @@ import org.testng.annotations.Test;
 
 public class TransactionListTest extends BaseTest {
 
-    private final TransactionService transactionService = new TransactionService();
-    private final AccountDataProvider accountDataProvider = new AccountDataProvider();
     private Transaction transaction;
 
     @BeforeClass
     public void createTwoAccount() {
+        TransactionService transactionService = new TransactionService();
+        AccountDataProvider accountDataProvider = new AccountDataProvider();
         Account accountSource = accountDataProvider.createAccount("A", BigDecimal.valueOf(100.1), Currency.EURO);
         Account accountDestination = accountDataProvider.createAccount("B", BigDecimal.valueOf(137.7), Currency.EURO);
         Transaction tran = new Transaction(BigDecimal.valueOf(88.8), accountSource, accountDestination);
@@ -28,7 +28,7 @@ public class TransactionListTest extends BaseTest {
     }
 
     @Test
-    @Description("Transaction list page with default parameters displays nee transactions")
+    @Description("Transaction list page with default parameters displays transactions")
     public void createdTransactionDisplayedInTableWithDefaultDates() {
         MainPage.open()
                 .goToTransactionList()

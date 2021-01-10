@@ -29,6 +29,9 @@ public interface TestConfiguration extends Config {
     @Key("app.url")
     String baseUrl();
 
+    @Key("app.api.url")
+    String apiUrl();
+
     @Key("selenide.remote")
     String remoteHost();
 

@@ -1,5 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="UI suite" parallel="methods" thread-count="2">
+<suite name="UI suite">
+  <listeners>
+    <listener class-name="de.mobilab.ui.listeners.TestListener"></listener>
+  </listeners>
   <test name="UI smoke">
     <classes>
       <class name="de.mobilab.ui.tests.AccountListTest"></class>
